@@ -1,29 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_tolower.c                                       :+:      :+:    :+:   */
+/*   memcpy.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: selango <selango@student.42.fr>            #+#  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024-05-28 09:05:00 by selango           #+#    #+#             */
-/*   Updated: 2024-05-28 09:05:00 by selango          ###   ########.fr       */
+/*   Created: 2024-05-22 08:42:27 by selango           #+#    #+#             */
+/*   Updated: 2024-05-22 08:42:27 by selango          ###   ########\         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_tolower(int ch)
+void	*ft_memcpy(void *dest, const void *src, size_t n)
 {
-	if (ch >= 65 && ch <= 90)
+	size_t	i;
+
+	i = 0;
+	while (i < n)
 	{
-		return (ch + 32);
+		((unsigned char *)dest)[i] = ((unsigned char *)src)[i];
+		i++;
 	}
-	return (ch);
+	return (dest);
 }
 
 // int main()
 // {
-//     int ch = 65;
-//     printf("%d\n", ft_tolower(ch));
-//     return 0;
+// 	char dest[] = "hello";
+// 	const char src[] = "world";
+// 	size_t n = 5;
+// 	ft_memcpy(dest, src, n);
+// 	printf("%s\n", dest);
+// 	return (0);
 // }

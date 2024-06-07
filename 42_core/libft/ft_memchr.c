@@ -1,40 +1,44 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strnstr.c                                       :+:      :+:    :+:   */
+/*   ft_memchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: selango <selango@student.42.fr>            #+#  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024-05-28 08:46:06 by selango           #+#    #+#             */
-/*   Updated: 2024-05-28 08:46:06 by selango          ###   ########.fr       */
+/*   Created: 2024-05-23 09:25:38 by selango           #+#    #+#             */
+/*   Updated: 2024-05-23 09:25:38 by selango          ###   ########\         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strnstr(const char *str1, const char *str2, size_t len)
+void	*ft_memchr(const void *str, int c, size_t n)
 {
-	size_t	i;
-	size_t	j;
+	unsigned char		a;
+	size_t				i;
+	const unsigned char	*s;
 
+	a = (unsigned char)c;
+	s = (const unsigned char *)str;
 	i = 0;
-	if (str2[i] == '\0')
-		return ((char *)&str1[i]);
-	while (str1[i] != '\0' && i < len)
+	while (i < n)
 	{
-		j = 0;
-		while (i + j < len && str2[j] != '\0' && str1[i + j] == str2[j])
-			j++;
-		if (str2[j] == '\0')
-			return ((char *)&str1[i]);
+		if (s[i] == a)
+		{
+			return ((unsigned char *)&s[i]);
+		}
 		i++;
 	}
 	return (NULL);
 }
+
 // int main()
 // {
-// 	char *str1 = "aaabcabcd";
-// 	char *str2 = "aaabc";
-// 	size_t n = 5;
-// 	printf("%s\n", ft_strnstr(str1, str2, n));
+// 	const char s[] = "Hello & world &";
+// 	int c = '&';
+// 	size_t n = 7;
+// 	char *res = ft_memchr(s,c , n);
+// 	printf("%s\n", res);
+// 	char *rest = memchr(s,c,n);
+// 	printf("%s\n", rest);
 // }

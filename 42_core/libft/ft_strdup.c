@@ -1,27 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstlast.c                                       :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: selango <selango@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/05 13:35:42 by selango           #+#    #+#             */
-/*   Updated: 2024/06/05 13:36:29 by selango          ###   ########.fr       */
+/*   Created: 2024/03/13 13:57:45 by selango           #+#    #+#             */
+/*   Updated: 2024/06/05 13:27:25 by selango          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-t_list	*ft_lstlast(t_list *lst)
+char	*ft_strdup(const char *src)
 {
-	t_list	*node;
+	char	*new;
+	int		len;
 
-	node = lst;
-	if (!node)
-		return (node);
-	while (node->next != NULL)
+	len = 0;
+	while (src[len] != '\0')
+		len++;
+	new = (char *)malloc((len + 1) * sizeof(char));
+	if (new == NULL)
+		return (NULL);
+	while (len >= 0)
 	{
-		node = node->next;
+		new[len] = src[len];
+		len--;
 	}
-	return (node);
+	return (new);
 }
+
+// int	main(void)
+// {
+// 	char	*a;
+
+// 	a = "Hello";
+// 	printf("%s\n", ft_strdup(a));
+// }

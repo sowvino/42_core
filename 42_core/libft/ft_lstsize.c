@@ -1,46 +1,28 @@
-#include <stdlib.h>
-#include <stdio.h>
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_lstsize.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: selango <selango@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/06/05 13:24:04 by selango           #+#    #+#             */
+/*   Updated: 2024/06/05 13:35:18 by selango          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-// Define the t_list structure
-typedef struct s_list
+#include "libft.h"
+
+int	ft_lstsize(t_list *lst)
 {
-    void *content;
-    struct s_list *next;
-} t_list;
- 
-int ft_lstsize(t_list *lst)
-{
-    int count;
-    count = 0;
-    t_list *node;
-    node = lst;
-    
-    while(node != NULL)
-    {
-        count++;
-        node = node-> next;
-    }
-    return (count);
-}
+	t_list	*node;
+	int		count;
 
-int main() {
-   
-    t_list *list = NULL;
-
-    t_list *node1 = malloc(sizeof(t_list));
-    t_list *node2 = malloc(sizeof(t_list));
-    t_list *node3 = malloc(sizeof(t_list));
-
-    node1->content = "Hello";
-    node2->content = "World";
-    node3->content = "!";
-
-    node1->next = node2;
-    node2->next = node3;
-    node3->next = NULL;
-
-    list = node1;
-
-    printf("The size of the list is: %d\n", ft_lstsize(list));
-
+	count = 0;
+	node = lst;
+	while (node != NULL)
+	{
+		count++;
+		node = node->next;
+	}
+	return (count);
 }

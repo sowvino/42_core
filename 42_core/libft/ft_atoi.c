@@ -1,40 +1,49 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strnstr.c                                       :+:      :+:    :+:   */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: selango <selango@student.42.fr>            #+#  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024-05-28 08:46:06 by selango           #+#    #+#             */
-/*   Updated: 2024-05-28 08:46:06 by selango          ###   ########.fr       */
+/*   Created: 2024-03-20 09:59:15 by selango           #+#    #+#             */
+/*   Updated: 2024-03-20 09:59:15 by selango          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strnstr(const char *str1, const char *str2, size_t len)
+int	ft_atoi(const char *str)
 {
-	size_t	i;
-	size_t	j;
+	int	i;
+	int	sign;
+	int	res;
 
 	i = 0;
-	if (str2[i] == '\0')
-		return ((char *)&str1[i]);
-	while (str1[i] != '\0' && i < len)
+	sign = 1;
+	res = 0;
+	while ((str[i] >= 9 && str[i] <= 13) || (str[i] == 32))
 	{
-		j = 0;
-		while (i + j < len && str2[j] != '\0' && str1[i + j] == str2[j])
-			j++;
-		if (str2[j] == '\0')
-			return ((char *)&str1[i]);
 		i++;
 	}
-	return (NULL);
+	if (str[i] == '-' || str[i] == '+')
+	{
+		if (str[i] == '-')
+			sign = -1;
+		i++;
+	}
+	while (str[i] >= '0' && str[i] <= '9')
+	{
+		res = (str[i] - '0') + (res * 10);
+		i++;
+	}
+	return (res * sign);
 }
-// int main()
+
+// int	main(void)
 // {
-// 	char *str1 = "aaabcabcd";
-// 	char *str2 = "aaabc";
-// 	size_t n = 5;
-// 	printf("%s\n", ft_strnstr(str1, str2, n));
+// 	char	*s;
+
+// 	s = "--1234ab567";
+// 	printf("%d\n", ft_atoi(s));
+// 	printf("%d\n" , atoi(s));
 // }

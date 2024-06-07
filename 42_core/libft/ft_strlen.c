@@ -1,27 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstlast.c                                       :+:      :+:    :+:   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: selango <selango@student.42.fr>            +#+  +:+       +#+        */
+/*   By: selango <selango@student.42.fr>            #+#  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/05 13:35:42 by selango           #+#    #+#             */
-/*   Updated: 2024/06/05 13:36:29 by selango          ###   ########.fr       */
+/*   Created: 2024-03-05 08:40:56 by selango           #+#    #+#             */
+/*   Updated: 2024-03-05 08:40:56 by selango          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-t_list	*ft_lstlast(t_list *lst)
+size_t	ft_strlen(const char *str)
 {
-	t_list	*node;
+	int	i;
 
-	node = lst;
-	if (!node)
-		return (node);
-	while (node->next != NULL)
+	i = 0;
+	while (str[i] != '\0')
 	{
-		node = node->next;
+		i++;
 	}
-	return (node);
+	return (i);
 }
+
+// int	main(void)
+// {
+// 	char	*str;
+// 	int		length;
+
+// 	str = "123";
+// 	length = ft_strlen(str);
+// 	printf("Length of the String: %d", length);
+// }

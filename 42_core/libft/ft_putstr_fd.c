@@ -1,27 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstlast.c                                       :+:      :+:    :+:   */
+/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: selango <selango@student.42.fr>            +#+  +:+       +#+        */
+/*   By: selango <selango@student.42.fr>            #+#  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/05 13:35:42 by selango           #+#    #+#             */
-/*   Updated: 2024/06/05 13:36:29 by selango          ###   ########.fr       */
+/*   Created: 2024-05-30 12:00:42 by selango           #+#    #+#             */
+/*   Updated: 2024-05-30 12:00:42 by selango          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-t_list	*ft_lstlast(t_list *lst)
+void	ft_putstr_fd(char *s, int fd)
 {
-	t_list	*node;
+	int	len;
+	int	i;
 
-	node = lst;
-	if (!node)
-		return (node);
-	while (node->next != NULL)
+	len = ft_strlen(s);
+	i = 0;
+	while (i < len)
 	{
-		node = node->next;
+		write(fd, &s[i], 1);
+		i++;
 	}
-	return (node);
 }
+
+// int main()
+// {
+// 	ft_putstr_fd("Hello" , 1);
+// }

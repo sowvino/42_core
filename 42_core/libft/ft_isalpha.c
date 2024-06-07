@@ -1,27 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstlast.c                                       :+:      :+:    :+:   */
+/*   ft_str_is_alpha.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: selango <selango@student.42.fr>            +#+  +:+       +#+        */
+/*   By: selango <selango@student.42.fr>            #+#  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/05 13:35:42 by selango           #+#    #+#             */
-/*   Updated: 2024/06/05 13:36:29 by selango          ###   ########.fr       */
+/*   Created: 2024-03-05 16:32:53 by selango           #+#    #+#             */
+/*   Updated: 2024-03-05 16:32:53 by selango          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-t_list	*ft_lstlast(t_list *lst)
+int	ft_isalpha(int c)
 {
-	t_list	*node;
-
-	node = lst;
-	if (!node)
-		return (node);
-	while (node->next != NULL)
-	{
-		node = node->next;
-	}
-	return (node);
+	return ((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z'));
 }
+
+// int	main(void)
+// {
+// 	char	*k;
+
+// 	k = "apnfjnffkdk";
+// 	ft_isalpha(k);
+// 	printf("%d\n", ft_isalpha(k));
+// }

@@ -1,69 +1,28 @@
-#include <stdlib.h>
-#include <stdio.h>
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_lstadd_back.c                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: selango <selango@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/06/05 13:39:52 by selango           #+#    #+#             */
+/*   Updated: 2024/06/05 14:59:00 by selango          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-typedef struct s_list
+#include "libft.h"
+
+void	ft_lstadd_back(t_list **lst, t_list *new)
 {
-    void *content;
-    struct s_list *next;
-} t_list;
+	t_list	*position;
 
-t_list *ft_lstlast(t_list *lst)
-{
-    t_list *node;
-    node = lst;
-    if(!node)
-        return  node;
-    
-    while(node->next != NULL)
-    {
-        node = node->next;
-    }
-    return (node);
-}
-
-void ft_lstadd_back(t_list **lst, t_list *new)
-{
-    if (!lst || !new)
-        return NULL;
-    ft_lstlast(*lst)->next = new;     
-}
-
-int main() {
-    // Create a new list
-    t_list *list = NULL;
-
-    // Allocate three nodes
-    t_list *node1 = malloc(sizeof(t_list));
-    t_list *node2 = malloc(sizeof(t_list));
-    t_list *node3 = malloc(sizeof(t_list));
-
-    // Assign some values
-    node1->content = "Hello";
-    node2->content = "World";
-    node3->content = "!";
-
-    // Link the nodes together
-    node1->next = node2;
-    node2->next = node3;
-    node3->next = NULL;
-
-    // Set the list to the first node
-    list = node1;
-
-    // Allocate a new node
-    t_list *new_node = malloc(sizeof(t_list));
-    new_node->content = "This is a new node.";
-    new_node->next = NULL;
-
-    // Add the new node to the end of the list
-    ft_lstadd_back(&list, new_node);
-
-    // Print the content of each node in the list
-    t_list *current_node = list;
-    while (current_node != NULL) {
-        printf("%s\n", (char *)current_node->content);
-        current_node = current_node->next;
-    }
-
-    return 0;
+	if (!lst || !new)
+		return ;
+	if (*lst == NULL)
+		*lst = new;
+	else
+	{
+		position = ft_lstlast(*lst);
+		position->next = new;
+	}
 }

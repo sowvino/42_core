@@ -1,27 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstlast.c                                       :+:      :+:    :+:   */
+/*   ft_isalnum.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: selango <selango@student.42.fr>            +#+  +:+       +#+        */
+/*   By: selango <selango@student.42.fr>            #+#  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/05 13:35:42 by selango           #+#    #+#             */
-/*   Updated: 2024/06/05 13:36:29 by selango          ###   ########.fr       */
+/*   Created: 2024-05-21 09:51:39 by selango           #+#    #+#             */
+/*   Updated: 2024-05-21 09:51:39 by selango          ###   ########\         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-t_list	*ft_lstlast(t_list *lst)
+int	ft_isalnum(int c)
 {
-	t_list	*node;
-
-	node = lst;
-	if (!node)
-		return (node);
-	while (node->next != NULL)
-	{
-		node = node->next;
-	}
-	return (node);
+	return (ft_isalpha(c) || ft_isdigit(c));
 }
+
+// int	main(void)
+// {
+// 	char	*k;
+
+// 	k = "*&";
+// 	ft_isalnum(k);
+// 	printf("%d\n", ft_isalnum(k));
+// }

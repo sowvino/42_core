@@ -1,29 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_tolower.c                                       :+:      :+:    :+:   */
+/*   memset.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: selango <selango@student.42.fr>            #+#  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024-05-28 09:05:00 by selango           #+#    #+#             */
-/*   Updated: 2024-05-28 09:05:00 by selango          ###   ########.fr       */
+/*   Created: 2024-05-21 10:49:02 by selango           #+#    #+#             */
+/*   Updated: 2024-05-21 10:49:02 by selango          ###   ########\         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_tolower(int ch)
+void	*ft_memset(void *str, int a, size_t n)
 {
-	if (ch >= 65 && ch <= 90)
+	size_t	i;
+
+	i = 0;
+	while (i < n)
 	{
-		return (ch + 32);
+		((unsigned char *)str)[i] = a;
+		i++;
 	}
-	return (ch);
+	return (str);
 }
 
-// int main()
+// int	main(void)
 // {
-//     int ch = 65;
-//     printf("%d\n", ft_tolower(ch));
-//     return 0;
+// 	char str[30] = "hello";
+// 	int a = '$';
+// 	size_t n = 2;
+// 	ft_memset(str + 2,a,n);
+// 	printf("%s\n",str );
 // }

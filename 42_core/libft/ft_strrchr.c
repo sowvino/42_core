@@ -1,29 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_tolower.c                                       :+:      :+:    :+:   */
+/*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: selango <selango@student.42.fr>            #+#  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024-05-28 09:05:00 by selango           #+#    #+#             */
-/*   Updated: 2024-05-28 09:05:00 by selango          ###   ########.fr       */
+/*   Created: 2024-05-22 13:44:08 by selango           #+#    #+#             */
+/*   Updated: 2024-05-22 13:44:08 by selango          ###   ########\         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_tolower(int ch)
+char	*ft_strrchr(const char *s, int c)
 {
-	if (ch >= 65 && ch <= 90)
+	char	a;
+	int		i;
+
+	a = (char)c;
+	i = ft_strlen((char *)s);
+	if (a == '\0')
+		return ((char *)&s[i]);
+	while (i >= 0)
 	{
-		return (ch + 32);
+		if (s[i] == a)
+		{
+			return ((char *)&s[i]);
+		}
+		i--;
 	}
-	return (ch);
+	return (NULL);
 }
 
 // int main()
 // {
-//     int ch = 65;
-//     printf("%d\n", ft_tolower(ch));
-//     return 0;
+// 	char s[] = "Hello & world & hello";
+// 	int c = '&';
+// 	printf("%s\n", ft_strchr(s, c));
+// 	printf("%s\n",strrchr(s,c));
 // }

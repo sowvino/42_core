@@ -1,27 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstlast.c                                       :+:      :+:    :+:   */
+/*   bzero.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: selango <selango@student.42.fr>            +#+  +:+       +#+        */
+/*   By: selango <selango@student.42.fr>            #+#  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/05 13:35:42 by selango           #+#    #+#             */
-/*   Updated: 2024/06/05 13:36:29 by selango          ###   ########.fr       */
+/*   Created: 2024-05-22 08:32:40 by selango           #+#    #+#             */
+/*   Updated: 2024-05-22 08:32:40 by selango          ###   ########\         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-t_list	*ft_lstlast(t_list *lst)
+void	ft_bzero(void *s, size_t n)
 {
-	t_list	*node;
+	size_t	i;
 
-	node = lst;
-	if (!node)
-		return (node);
-	while (node->next != NULL)
+	i = 0;
+	while (i < n)
 	{
-		node = node->next;
+		((unsigned char *)s)[i] = '\0';
+		i++;
 	}
-	return (node);
 }
+
+// int	main(void)
+// {
+// 	char s[30] = "hello";
+// 	size_t n = 1;
+// 	ft_bzero(s,n);
+// 	printf("%s\n",s);
+// }

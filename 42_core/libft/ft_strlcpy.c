@@ -1,29 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_tolower.c                                       :+:      :+:    :+:   */
+/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: selango <selango@student.42.fr>            #+#  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024-05-28 09:05:00 by selango           #+#    #+#             */
-/*   Updated: 2024-05-28 09:05:00 by selango          ###   ########.fr       */
+/*   Created: 2024-03-20 11:45:41 by selango           #+#    #+#             */
+/*   Updated: 2024-03-20 11:45:41 by selango          ###   ########\         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_tolower(int ch)
+int	ft_strlcpy(char *dest, const char *src, size_t size)
 {
-	if (ch >= 65 && ch <= 90)
+	size_t	i;
+	size_t	len;
+
+	len = ft_strlen((char *)src);
+	i = 0;
+	if (size != 0)
 	{
-		return (ch + 32);
+		while (src[i] != '\0' && i < size - 1)
+		{
+			dest[i] = src[i];
+			i++;
+		}
+		dest[i] = '\0';
 	}
-	return (ch);
+	return (len);
 }
 
-// int main()
+// int	main(void)
 // {
-//     int ch = 65;
-//     printf("%d\n", ft_tolower(ch));
-//     return 0;
+// 	char src[] = "World!";
+// 	char dest[] = "Hello ";
+// 	printf("%d | %s\n", ft_strlcpy(dest, src, 10), dest);
 // }

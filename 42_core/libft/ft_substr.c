@@ -1,40 +1,47 @@
-#include <stdlib.h>
-#include <stdio.h>
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_substr.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: selango <selango@student.42.fr>            #+#  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024-05-28 09:07:06 by selango           #+#    #+#             */
+/*   Updated: 2024-05-28 09:07:06 by selango          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-unsigned int ft_strlen(char *s)
+#include "libft.h"
+
+char	*ft_substr(const char *s, unsigned int start, size_t len)
 {
-    unsigned j = 0;
-    while (s[j] != '\0')
-    {
-        j++;
-    }
-    return (j);
-}
-char *ft_substr(const char *s, unsigned int start, size_t len)
-{
-    char *substr;
-    unsigned int i;
-    i = 0;
-    unsigned int strlength;
-    strlength = ft_strlen((char *)s);
-    substr = (char *)malloc((len + 1) * sizeof(char));
+	char	*substr;
+	size_t	i;
+	size_t	strlength;
 
-    if (substr == NULL || s[i] == '\0')
-        return NULL;
-
-    while (i < len && (len < strlength))
-    {
-        substr[i] = s[start + i];
-        i++;
-    }
-    substr[i] = '\0';
-    return (substr);
+	i = 0;
+	if (s == NULL)
+		return (NULL);
+	strlength = ft_strlen((char *)s);
+	if (start >= strlength)
+		return (ft_strdup(""));
+	if (start + len > strlength)
+		len = strlength - start;
+	substr = malloc((len + 1) * sizeof(char));
+	if (substr == NULL)
+		return (NULL);
+	while (i < len && s[start + i] != '\0')
+	{
+		substr[i] = s[start + i];
+		i++;
+	}
+	substr[i] = '\0';
+	return (substr);
 }
 
-int main()
-{
-    const char *s = "hello";
-    unsigned int start = 1;
-    size_t len = 4;
-    printf("%s\n", ft_substr(s, start, len));
-}
+// int main()
+// {
+// 	const char *s = "hello world";
+// 	unsigned int start = 7;
+// 	size_t len = 6;
+// 	printf("%s\n", ft_substr(s, start, len));
+// }
